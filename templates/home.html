@@ -1,47 +1,175 @@
-<!-- home.html -->
+<!-- Fixed: navbar/cards will not overflow, fully responsive, no Contact tag -->
 <!DOCTYPE html>
 <html>
 <head>
   <title>Medicare - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Same styling from index.html */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Nunito', Arial, sans-serif;
       background: linear-gradient(135deg, #232526 0%, #414345 100%);
-      margin: 0; min-height: 100vh; color: #e0e0e0;
+      min-height: 100vh;
+      color: #e0e0e0;
+      overflow-x: hidden;
     }
     .navbar {
-      width: 100%; background: linear-gradient(90deg, #43c6ac 60%, #232526 100%);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 32px; height: 64px;
-      border-radius: 0 0 24px 24px; box-shadow: 0 2px 12px #43c6ac22;
+      width: 100%;
+      background: linear-gradient(90deg, #43c6ac 60%, #232526 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      min-height: 64px;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 2px 12px #43c6ac22;
+      position: relative;
+      box-sizing: border-box;
+      overflow-x: auto;
     }
-    .navbar-brand { font-family: 'Baloo 2', cursive; font-size: 2em; color: #b2ff59; }
-    .navbar-links { display: flex; gap: 16px; margin-left:auto; }
+    .navbar-brand {
+      font-family: 'Baloo 2', cursive;
+      font-size: 2em;
+      color: #b2ff59;
+      letter-spacing: 2px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+      flex-wrap: wrap;
+      white-space: nowrap;
+    }
     .navbar-links a {
-      color: #e0e0e0; text-decoration: none; font-weight: 700; padding: 8px 16px; border-radius: 8px;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.15em;
+      font-weight: 700;
+      transition: color 0.2s, background 0.2s;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
     }
-    .navbar-links a:hover, .active { background: #b2ff59; color: #232526 !important; }
+    .navbar-links a:hover, .navbar-links a.active {
+      color: #232526;
+      background: #b2ff59;
+    }
+    .navbar-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      margin-left: 16px;
+    }
+    .navbar-hamburger span {
+      height: 4px;
+      width: 28px;
+      background: #b2ff59;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
     .container {
-      max-width: 1000px; margin: 0 auto; padding: 48px 16px; text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 16px;
+      text-align: center;
+      box-sizing: border-box;
     }
     h1 { color: #43c6ac; font-family: 'Baloo 2'; font-size: 2.5em; }
     p { color: #b2ff59; font-size: 1.2em; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 24px; margin-top: 32px; }
-    .card { background: #232526; border: 2px solid #43c6ac; border-radius: 20px; padding: 24px; box-shadow: 0 4px 16px #43c6ac33; transition:.2s }
-    .card:hover { transform: scale(1.05); box-shadow:0 6px 32px #43c6ac55; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .card {
+      background: #232526;
+      border: 2px solid #43c6ac;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 4px 16px #43c6ac33;
+      transition: .2s;
+      min-width: 0;
+      word-break: break-word;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 32px #43c6ac55;
+    }
     .card h3 { color: #b2ff59; }
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 0 8px;
+      }
+      .navbar-links {
+        gap: 12px;
+      }
+      .container {
+        padding: 32px 8px;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+        padding: 0 8px;
+      }
+      .navbar-links {
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background: #232526;
+        flex-direction: column;
+        width: 100vw;
+        display: none;
+        box-shadow: 0 4px 16px #43c6ac22;
+        border-radius: 0 0 24px 24px;
+        z-index: 10;
+        padding: 12px 0;
+      }
+      .navbar-links.show {
+        display: flex;
+      }
+      .navbar-hamburger {
+        display: flex;
+      }
+      .container {
+        padding: 18px 4px;
+      }
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="navbar">
     <div class="navbar-brand">Medicare</div>
-    <div class="navbar-links" style="margin-left:auto;">
+    <div class="navbar-hamburger" onclick="toggleNavbar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="navbar-links" id="navbarLinks">
       <a href="/home" class="active">Home</a>
       <a href="/">Chat</a>
       <a href="/about">About</a>
-      <a href="/contact">Contact</a>
     </div>
   </div>
   <div class="container">
@@ -53,5 +181,11 @@
       <div class="card"><h3>Emergency Help</h3><p>Get instant support and connect with nearby hospitals.</p></div>
     </div>
   </div>
+  <script>
+    function toggleNavbar() {
+      var links = document.getElementById('navbarLinks');
+      links.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
