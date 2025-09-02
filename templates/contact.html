@@ -1,0 +1,49 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medicare - Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Nunito',Arial;background:linear-gradient(135deg,#232526 0%,#414345 100%);margin:0;color:#e0e0e0;}
+    .navbar{width:100%;background:linear-gradient(90deg,#43c6ac 60%,#232526 100%);display:flex;justify-content:space-between;align-items:center;padding:0 32px;height:64px;border-radius:0 0 24px 24px;box-shadow:0 2px 12px #43c6ac22;}
+    .navbar-brand{font-family:'Baloo 2';font-size:2em;color:#b2ff59;}
+    .navbar-links{display:flex;gap:24px;}
+    .navbar-links a{color:#e0e0e0;text-decoration:none;font-weight:700;padding:8px 16px;border-radius:8px;}
+    .navbar-links a:hover,.active{background:#b2ff59;color:#232526 !important;}
+    .container{max-width:800px;margin:0 auto;padding:48px 16px;text-align:center;}
+    h1{color:#43c6ac;font-family:'Baloo 2';font-size:2.3em;}
+    form{margin-top:32px;text-align:left;}
+    label{display:block;margin-top:16px;font-weight:700;color:#b2ff59;}
+    input,textarea{width:100%;padding:12px;margin-top:8px;border-radius:10px;border:2px solid #43c6ac;background:#414345;color:#e0e0e0;}
+    input:focus,textarea:focus{border-color:#b2ff59;outline:none;}
+    button{margin-top:20px;padding:12px 24px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(90deg,#43c6ac 60%,#232526 100%);color:#b2ff59;font-weight:bold;}
+    button:hover{background:linear-gradient(90deg,#b2ff59 0%,#43c6ac 100%);color:#232526;}
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-brand">Medicare</div>
+    <div class="navbar-links">
+      <a href="/home">Home</a>
+      <a href="/">chat</a>
+      <a href="/about">About</a>
+      
+    </div>
+  </div>
+  </div>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Whether you have a question about our services or need urgent support, reach out anytime.</p>
+    <form>
+      <label>Name</label>
+      <input type="text" placeholder="Your Name" required>
+      <label>Email</label>
+      <input type="email" placeholder="Your Email" required>
+      <label>Message</label>
+      <textarea rows="5" placeholder="Write your message here..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</body>
+</html>
